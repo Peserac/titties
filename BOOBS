@@ -373,7 +373,7 @@ function Update()
 end
 
 local AC = true
-local Key = Enum.KeyCode.Q
+local Key = Enum.KeyCode
 
 game:GetService("UserInputService").InputBegan:Connect(function(k,g)
   if not g and k.KeyCode == Key then
